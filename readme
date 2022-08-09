@@ -1,0 +1,4 @@
+typescript
+nodemon // paro observar o app
+validator // validaçao de coisas
+ts-node // para reconhecer typescript

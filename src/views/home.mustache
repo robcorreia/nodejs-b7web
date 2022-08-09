@@ -16,9 +16,17 @@
 
     <h2>Endereços</h2>
 
+    <ul>
     {{#user.address}}
       <li>{{.}}</li>
     {{/user.address}}
+    {{^user.address}}
+      <p>Sem endereços cadastrados</p>
+    {{/user.address}}
+    </ul>
+
+    
+
     <hr/>
 
     <h2>Produtos</h2>

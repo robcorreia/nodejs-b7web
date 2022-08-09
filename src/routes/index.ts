@@ -1,9 +1,19 @@
 import { Router, Request, Response } from "express";
 
 const router = Router();
+interface User {
+  name: string;
+  age: number;
+}
 
 router.get("/", (req: Request, res: Response) => {
-  res.render("home");
+  const user: User = {
+    name: "Robson",
+    age: 27,
+  };
+  res.render("home", {
+    user,
+  });
 });
 
 router.get("/sobre", (req: Request, res: Response) => {

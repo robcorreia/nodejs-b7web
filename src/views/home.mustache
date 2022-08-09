@@ -3,8 +3,30 @@
     <title>Página Home </title>
   <head>
   <body>
+
     <h1>Título da Página</h1>
+
     <hr/>
-    Olá {{ user.name }}, vimos que voce tem {{ user.age }} anos
+
+    {{#user.status}}
+      Olá {{ user.name }}, vimos que voce tem {{ user.age }} anos
+    {{/user.status}}
+
+    <hr/>
+
+    <h2>Endereços</h2>
+
+    {{#user.address}}
+      <li>{{.}}</li>
+    {{/user.address}}
+    <hr/>
+
+    <h2>Produtos</h2>
+
+    <ul>
+    {{#user.products}}
+      <li>{{ title }} - R$ {{ price }}
+    {{/user.products}}
+    </ul>
   </body>
 </html>

@@ -32,17 +32,17 @@ router.get("/", (req: Request, res: Response) => {
       { title: "Produto w", price: 20 },
     ],
   };
-  res.render("home", {
+  res.render("pages/home", {
     user,
   });
 });
 
 router.get("/sobre", (req: Request, res: Response) => {
-  res.send("Sobre");
+  res.render("pages/about");
 });
 
 router.get("/contato", (req: Request, res: Response) => {
-  res.send("Contato");
+  res.render("pages/contact");
 });
 
 export default router;

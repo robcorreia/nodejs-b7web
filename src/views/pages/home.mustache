@@ -28,6 +28,15 @@
      {{>partials/productItem}}
     {{/user.products}}
     </ul>
+
+    <h2>Produtos a partir de 12 reais</h2>
+
+    <ul>
+    {{#user.expansivesProducts}}
+     {{>partials/productItem}}
+    {{/user.expansivesProducts}}
+    </ul>
+  
   
 
   {{>partials/footer}}

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-
+import { Product } from '../models/Product'
 
 interface Product {
   title: string;
@@ -13,6 +13,7 @@ interface User {
   status: boolean;
   address: string[];
   products: Product[];
+  expansivesProducts: Product[];
 }
 
 export const home = (req: Request, res: Response) => {
@@ -22,16 +23,17 @@ export const home = (req: Request, res: Response) => {
     status = true;
   }
 
+  let productList = Product.getAll();
+  let expensiveProductList = Product.getFromPriceAfter(12);
+
+
   const user: User = {
     name: "Robson",
     age: 27,
     status,
     address: ["Rua 1", "Rua 2", "Rua 3"],
-    products: [
-      { title: "Produto x", price: 10 },
-      { title: "Produto y", price: 15 },
-      { title: "Produto w", price: 20 },
-    ],
+    products: productList,
+    expansivesProducts: expensiveProductList,
   };
   res.render("pages/home", {
     user,

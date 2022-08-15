@@ -3,18 +3,20 @@ import path from "path";
 import mustache from "mustache-express";
 import mainRoutes from "./routes/index";
 
-const app = express();
+const server = express();
 
-app.set("view engine", "mustache");
-app.set("views", path.join(__dirname, "views"));
-app.engine("mustache", mustache());
+server.set("view engine", "mustache");
+server.set("views", path.join(__dirname, "views"));
+server.engine("mustache", mustache());
 
-app.use("/static", express.static(path.join(__dirname, "../public")));
+server.use("/static", express.static(path.join(__dirname, "../public")));
 
-app.use(mainRoutes);
+server.use(express.urlencoded({ extended: true })); //habilita coletar dados via post
 
-app.use((req: Request, res: Response) => {
+server.use(mainRoutes);
+
+server.use((req: Request, res: Response) => {
   res.status(404).send("Página não encontrada!");
 });
 
-app.listen(3000);
+server.listen(3000);
